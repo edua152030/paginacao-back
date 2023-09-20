@@ -1,0 +1,127 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "trabalho-final",
+    "dateExported": "2023-08-28T12:40:45.169Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "6e91e60d-3554-4829-a70c-2c7aa524469e",
+            "colId": "4eba2d03-c6bc-4e66-bf91-3429fd09b340",
+            "containerId": "",
+            "name": "cadastrar-usuario",
+            "url": "https://teste-api-u.onrender.com/createUser",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-08-23T14:03:11.892Z",
+            "modified": "2023-08-28T11:49:30.633Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"teste\",\n  \"email\": \"eduardo\",\n  \"pass\": \"eduardo\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f0e87a09-f8ee-4bef-8570-9731c3e0ec19",
+            "colId": "4eba2d03-c6bc-4e66-bf91-3429fd09b340",
+            "containerId": "",
+            "name": "listar usuario",
+            "url": "https://teste-api-u.onrender.com/listUsers",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-08-23T20:01:25.233Z",
+            "modified": "2023-08-28T11:54:17.087Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "19942d89-7380-4396-9ac5-c7dea69adc4b",
+            "colId": "4eba2d03-c6bc-4e66-bf91-3429fd09b340",
+            "containerId": "",
+            "name": "criar task",
+            "url": "https://teste-api-u.onrender.com/createTask",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-08-23T20:19:21.637Z",
+            "modified": "2023-08-28T11:55:31.628Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"titulo dois\", \n  \"description\": \"descricao dois\",\n  \"userId\": \"15d16c27-c2bd-4c04-88e3-8c79f5de51f7\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6865af33-c96a-4068-b933-fa51021438e7",
+            "colId": "4eba2d03-c6bc-4e66-bf91-3429fd09b340",
+            "containerId": "",
+            "name": "listar task",
+            "url": "https://teste-api-u.onrender.com/listTask/15d16c27-c2bd-4c04-88e3-8c79f5de51f7",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-08-23T20:21:21.111Z",
+            "modified": "2023-08-28T11:56:07.390Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3b888ebd-1817-4bc2-8b30-10489a792a57",
+            "colId": "4eba2d03-c6bc-4e66-bf91-3429fd09b340",
+            "containerId": "",
+            "name": "atualizar task",
+            "url": "https://teste-api-u.onrender.com/updateTask/c66c803c-9196-41c9-afc3-b5f877ebbbca",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2023-08-23T21:15:03.216Z",
+            "modified": "2023-08-28T11:57:31.527Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"novo titulo alterado\",\n  \"description\": \"nova descricao alterado\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b98e0787-9d32-47ef-aa1c-642cc8a098b6",
+            "colId": "4eba2d03-c6bc-4e66-bf91-3429fd09b340",
+            "containerId": "",
+            "name": "deletar task",
+            "url": "https://teste-api-u.onrender.com/deleteTask/c66c803c-9196-41c9-afc3-b5f877ebbbca",
+            "method": "DELETE",
+            "sortNum": 70000,
+            "created": "2023-08-24T10:35:24.203Z",
+            "modified": "2023-08-28T11:58:04.077Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "abf80f0e-eee8-4a02-bf29-ed8419bd37c2",
+            "colId": "4eba2d03-c6bc-4e66-bf91-3429fd09b340",
+            "containerId": "",
+            "name": "login",
+            "url": "https://teste-api-u.onrender.com/loginUser",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2023-08-28T12:08:23.067Z",
+            "modified": "2023-08-28T12:39:02.765Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"eduardo\",\n  \"pass\": \"eduardo\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
