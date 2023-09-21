@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 import bcrypt from 'bcrypt'
 
 const app = express()
-const porta = 3000
+const porta = 3333
 
 const users = []
 const tasks = []
@@ -63,46 +63,38 @@ app.get("/listUsers", (request, response) => {
     response.status(200).json(users);
 });
 
-app.post("/createTask", (request, response) => {
-    const { title, description, userId } = request.body
-    const user = users.find(user => user.id === userId)
+app.get("/listTasks/:userId/:page", (request, response) => {
+    const { userId, page } = request.params;
+    const pageNumber = parseInt(page) || 1;
+    const pageSize = 10;
+
+    const user = users.find(user => user.id === userId);
 
     if (!user) {
         return response.status(404).json({
-            message: 'usuario nao cadastrado'
-        })
+            message: "Usuário não encontrado"
+        });
     }
 
-    const newTask = {
-        id: uuidv4(),
-        title,
-        description,
-        userId
+    const userTasks = tasks.filter(task => task.userId === userId);
+
+    const startIndex = (pageNumber - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+
+    const paginatedTasks = userTasks.slice(startIndex, endIndex);
+
+    if (paginatedTasks.length === 0) {
+        return response.status(404).json({
+            message: "Nenhuma mensagem localizada para esta página"
+        });
     }
-    tasks.push(newTask)
-
-    response.status(201).json({
-        message: 'tarefa cadastrada', task: newTask
-    })
-})
-
-app.get("/listTask/:userId", (request, response) => {
-
-    const { userId } = request.params
-
-    const user = users.find(user => user.id === userId)
-
-    if(!user){
-        response.status(404).json({
-            message: "usuario nao encontrado"
-        })
-    }
-
-    const filtred = tasks.filter(task => task.userId === userId)
 
     response.status(200).json({
-     filtred
-    })
+        message: "Mensagens encontradas",
+        currentPage: pageNumber,
+        totalPages: Math.ceil(userTasks.length / pageSize),
+        tasks: paginatedTasks
+    });
 });
 
 app.put("/updateTask/:id", (request, response) => {
