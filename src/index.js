@@ -1,10 +1,7 @@
-import express from 'express';
-import { v4 as uuidv4 } from 'uuid';
-import bcrypt from 'bcrypt';
-
-const app2 = require('cors');
-
-app2.use(cors())
+const express = require('express');
+const { v4: uuidv4 } = require('uuid');
+const bcrypt = require('bcrypt');
+const cors = require('cors');
 
 const app = express();
 const porta = 3333;
@@ -13,6 +10,7 @@ const users = [];
 const tasks = [];
 
 app.use(express.json());
+app.use(cors()); 
 
 app.post("/createUser", async (request, response) => {
     const { name, email, pass } = request.body;
