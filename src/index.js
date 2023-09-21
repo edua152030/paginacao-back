@@ -64,27 +64,26 @@ app.get("/listUsers", (request, response) => {
 });
 
 app.post("/createTask", (request, response) => {
-    const { title, description, userId} = request.body
+    const { title, description, userId } = request.body
     const user = users.find(user => user.id === userId)
 
-    if(!user){
-        response.status(404).json({
+    if (!user) {
+        return response.status(404).json({
             message: 'usuario nao cadastrado'
         })
     }
 
     const newTask = {
         id: uuidv4(),
-        title, 
+        title,
         description,
         userId
     }
     tasks.push(newTask)
 
     response.status(201).json({
-        messsage: 'tarefa cadastrada', task: newTask
+        message: 'tarefa cadastrada', task: newTask
     })
-
 })
 
 app.get("/listTask/:userId", (request, response) => {
