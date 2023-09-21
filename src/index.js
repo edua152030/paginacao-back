@@ -87,38 +87,23 @@ app.post("/createTask", (request, response) => {
 
 })
 
-app.get("/listTasks/:userId/:page", (request, response) => {
-    const { userId, page } = request.params;
-    const pageNumber = parseInt(page) || 1;
-    const pageSize = 10;
+app.get("/listTask/:userId", (request, response) => {
 
-    const user = users.find(user => user.id === userId);
+    const { userId } = request.params
 
-    if (!user) {
-        return response.status(404).json({
-            message: "Usuário não encontrado"
-        });
+    const user = users.find(user => user.id === userId)
+
+    if(!user){
+        response.status(404).json({
+            message: "usuario nao encontrado"
+        })
     }
 
-    const userTasks = tasks.filter(task => task.userId === userId);
-
-    const startIndex = (pageNumber - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-
-    const paginatedTasks = userTasks.slice(startIndex, endIndex);
-
-    if (paginatedTasks.length === 0) {
-        return response.status(404).json({
-            message: "Nenhuma mensagem localizada para esta página"
-        });
-    }
+    const filtred = tasks.filter(task => task.userId === userId)
 
     response.status(200).json({
-        message: "Mensagens encontradas",
-        currentPage: pageNumber,
-        totalPages: Math.ceil(userTasks.length / pageSize),
-        tasks: paginatedTasks
-    });
+     filtred
+    })
 });
 
 app.put("/updateTask/:id", (request, response) => {
