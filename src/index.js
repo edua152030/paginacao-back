@@ -93,7 +93,7 @@ app.post("/createTask", (request, response) => {
 app.get("/listTasks/:userId/:page", (request, response) => {
     const { userId, page } = request.params;
     const pageNumber = parseInt(page) || 1;
-    const pageSize = 10;
+    const pageSize = 4;
 
     const user = users.find(user => user.id === userId);
 
